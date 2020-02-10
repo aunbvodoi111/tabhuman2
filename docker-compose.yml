@@ -31,7 +31,7 @@ services:
     image: adminer
     restart: unless-stopped
     ports:
-      - ${ADMINER_PORT}:8080
+      - 80:8080
     depends_on:
       - db
 
@@ -40,9 +40,9 @@ services:
     image: mysql:5.7.22
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laraveluser
+      MYSQL_PASSWORD: laraveluserpass
       MYSQL_ROOT_PASSWORD: rootpass
     volumes:
       - .docker/data/db:/var/lib/mysql/
@@ -60,3 +60,6 @@ services:
     volumes:
       - .docker/data/redis:/data
     restart: unless-stopped
+
+
+    
